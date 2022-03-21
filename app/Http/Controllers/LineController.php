@@ -43,11 +43,11 @@ class LineController extends Controller
         }
 
 
-        if(Auth::guard('admin')){
-            if($user->admin == 1) {
-               Auth::guard('admin')->session()->regenerate();
-            }
-        }
+        // if(Auth::guard('admin')){
+        //     if($user->admin == 1) {
+        //        Auth::guard('admin')->session()->regenerate();
+        //     }
+        // }
 
         Auth::login($user);
 

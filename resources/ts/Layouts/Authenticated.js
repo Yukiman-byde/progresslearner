@@ -3,10 +3,13 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import Avatar from '@mui/material/Avatar';
 import { Link } from '@inertiajs/inertia-react';
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+
+    console.log(auth);
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -22,6 +25,12 @@ export default function Authenticated({ auth, header, children }) {
                                 <NavLink href={route('resource.index')} active={route().current('resource.index')}>
                                     Resources
                                 </NavLink>
+                                <NavLink href={route('index.app')} active={route().current('index.app')}>
+                                    Index
+                                </NavLink>
+                                <NavLink href={route('category')} active={route().current('category')}>
+                                    Categories
+                                </NavLink>
                             </div>
                         </div>
 
@@ -30,11 +39,12 @@ export default function Authenticated({ auth, header, children }) {
                                 <Dropdown>
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
+                                            <Avatar src={auth.user?.myAvatar}/>
                                             <button
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {auth.user.name}
+                                               {auth.user.name}
 
                                                 <svg
                                                     className="ml-2 -mr-0.5 h-4 w-4"

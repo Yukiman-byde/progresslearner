@@ -7,6 +7,11 @@ use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\YoutubeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\LineController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\Cors;
+
+require __DIR__.'/auth.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +26,8 @@ use App\Http\Controllers\LineController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+        'canLogin' => Route::has('admin'),
+        'canRegister' => Route::has('admin.register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -35,6 +40,10 @@ Route::controller(LineController::class)->group(function() {
    Route::get('/logout', 'logout');
 });
 
+Route::prefix('admin')->name('admin.')->group(function(){
+    require __DIR__.'/admin.php';
+});
+
 
 Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('/resources', [ResourceController::class, 'index'])->name('resource.index');
@@ -44,6 +53,18 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::post('/category_level', [QuizController::class, 'attach']);
     Route::post('/length', [QuizController::class, 'length']);
     Route::post('/description', [QuizController::class, 'description']);
+    Route::post('/update_categories', [ResourceController::class, 'update_categories']);
+});
+
+Route::middleware(Cors::class)->prefix('admin')->group(function(){
+    Route::get('/categories', [ResourceController::class, 'categories'])->name('category');
+});
+Route::get('/practice', [ResourceController::class, 'practice']);
+
+Route::middleware('auth')->group(function(){
+    Route::get('/index', [IndexController::class, 'index'])->name('index.app');
+    Route::get('/index/Iframes', [IndexController::class, 'IFrame'])->name('index.iframe');
+    Route::get('/index/youtubes', [IndexController::class, 'test']);
 });
 
 

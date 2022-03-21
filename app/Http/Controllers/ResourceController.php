@@ -10,6 +10,7 @@ use App\Models\Level;
 use App\Models\Category;
 use App\Models\Information;
 use Inertia\Inertia;
+use Response;
 
 class ResourceController extends Controller
 {
@@ -55,6 +56,31 @@ class ResourceController extends Controller
         //
     }
 
+    public function categories(Category $category)
+    {
+      return Inertia::render('Resource/Category');
+    }
+
+    public function update_categories(StoreResourceRequest $request, Category $category){
+
+        $result = $category->if_category_exist($request->category, $request->English_category, $request->image);
+
+        if($result == null) {
+            $category->category = $request->category;
+
+            $category->English_category = $request->English_category;
+
+            $category->image = $request->image;
+
+            $category->save();
+        } else{
+            $message = "This category has been already set up";
+            return Response::json( $message );
+        }
+
+        return 200;
+    }
+
     public function quiz($id, Youtube $youtube, Level $level, Category $category){
         $youtube = $youtube->where('videoId', $id)->first();
         $levels = $level->get();
@@ -71,6 +97,10 @@ class ResourceController extends Controller
     public function edit(Resource $resource)
     {
         //
+    }
+
+    public function practice(){
+        return Inertia::render('Resource/Practice');
     }
 
     /**

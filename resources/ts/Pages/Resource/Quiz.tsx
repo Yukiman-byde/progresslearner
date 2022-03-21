@@ -158,7 +158,6 @@ const Quiz:React.FC<INewProps> = (props:INewProps) => {
                             </FormControl>
                     </LevelWrapper>
                     <CategoryWrapper>
-
                            <FormControl>
                                 <FormLabel>Category</FormLabel>
                                     <RadioGroup
@@ -263,7 +262,8 @@ const CategoryWrapper = styled.div`
     background-color: lightsteelblue;
     border-radius: 6px;
     position: relative;
-    height: 100px;
+    height: auto;
+    padding: 20px;
     align-items: center;
     justify-content: center;
     display: inline-block;

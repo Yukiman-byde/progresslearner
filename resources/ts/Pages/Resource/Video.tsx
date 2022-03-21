@@ -100,7 +100,7 @@ const CardStyled = styled(Card)`
  }
 `;
 
-const IframeStyled = styled.iframe`
+export const IframeStyled = styled.iframe`
   width: 450px;
   height: 350px;
   border-radius: 20px;
