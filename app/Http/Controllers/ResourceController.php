@@ -103,6 +103,11 @@ class ResourceController extends Controller
         return Inertia::render('Resource/Practice');
     }
 
+    public function practice2(Youtube $youtube){
+        $youtube = $youtube->get();
+        return Inertia::render('Resource/Practice2')->with(['youtubes' => $youtube]);
+    }
+
     /**
      * Update the specified resource in storage.
      *

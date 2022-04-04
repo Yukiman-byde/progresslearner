@@ -2,6 +2,7 @@ import React from 'react'
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import { NewButton } from '@/NewComponents/NewButton';
 
 interface IProps {
     placeholder: string,
@@ -26,12 +27,12 @@ const InputComponent = ({placeholder, setKeyword, handleClick, title}: IProps) =
         }}
         placeholder={placeholder}
         />
-        <Button
-         onClick={handleClick}
-         variant="contained"
-         >
-             Start
-        </Button>
+        <NewButtonStyled
+        onClick={handleClick}
+        color="#afeeee"
+        >
+            Start
+        </NewButtonStyled>
     </Wrapper>
   )
 }
@@ -48,6 +49,9 @@ const Wrapper = styled.div`
  border-top-left-radius: 20px;
  border-top-right-radius: 20px;
  position: relative;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
 
  h1 {
      position: absolute;
@@ -60,4 +64,8 @@ const Wrapper = styled.div`
      left: 15%;
      right: 15%;
  }
+`;
+
+const NewButtonStyled = styled(NewButton)`
+    margin: 0 auto;
 `;

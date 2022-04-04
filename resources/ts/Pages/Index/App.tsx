@@ -1,36 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import ListSubheader from '@mui/material/ListSubheader';
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
 import Authenticated from '@/Layouts/Authenticated';
 import { IProps } from '@/hooks';
-import IFrame from './IFrame';
+import HomeHeader from './HomeHeader';
 import axios from 'axios';
 import styled from 'styled-components';
-
-interface IPropsAndIVideo extends IProps {
-    youtubes: {
-        videoId: string,
-        name: string,
-        description: string,
-        thumbnail: string,
-    }
-}
+import {IPropsAndIVideo} from '../../hooks';
+import Grid from '@mui/material/Grid';
+import ItemListed from './ItemListed';
 
 
-const App:React.FC<IPropsAndIVideo> = (props) => {
-   console.log(props.youtubes[1].videoId);
-   let number: number = 4;
+const App:React.FC<IPropsAndIVideo> = ({auth, errors, youtubes}) => {
+
+
     return (
         <Authenticated
-        auth={props.auth}
-        errors={props.errors}
+        auth={auth}
+        errors={errors}
            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Home</h2>}
         >
-        <Wrapper>
-            <h1>Latest Videos</h1>
-            <IFrameWork>
-            <IFrame videoId={props.youtubes[0].videoId}/>
-            <IFrame videoId={props.youtubes[1].videoId}/>
-            </IFrameWork>
-        </Wrapper>
+            <HomeHeader />
 
         </Authenticated>
     );
@@ -38,26 +32,11 @@ const App:React.FC<IPropsAndIVideo> = (props) => {
 
 export default App;
 
-const Wrapper = styled.div`
-    width: 100%;
-    background: mediumseagreen;
-    text-align: center;
 
-    h1 {
-        font-size: 20px;
-        color: white;
-        border: 1px solid #fff;
-        background-color: cyan;
-    }
-`;
 
-const IFrameWork = styled.div`
-   max-width: 1200px;
-   width: 100%;
-   margin: 0 auto;
-   display: flex;
-   justify-content: space-evenly;
-   padding-top: 34px;
-   height: 400px;
-`;
+
+
+
+
+
 

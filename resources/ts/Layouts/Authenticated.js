@@ -12,16 +12,13 @@ export default function Authenticated({ auth, header, children }) {
     console.log(auth);
 
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen">
             <nav className="bg-white border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
 
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                    Dashboard
-                                </NavLink>
                                 <NavLink href={route('resource.index')} active={route().current('resource.index')}>
                                     Resources
                                 </NavLink>
@@ -65,6 +62,9 @@ export default function Authenticated({ auth, header, children }) {
                                     <Dropdown.Content>
                                         <Dropdown.Link href={route('logout')} method="post" as="button">
                                             Log Out
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href={route('logout')} method="post" as="button">
+                                            Profil Page
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>

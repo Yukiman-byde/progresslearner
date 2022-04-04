@@ -1,10 +1,30 @@
-export default function LineButton(){
+import styled from 'styled-components';
+
+export function LineButton(){
     return (
-        <a
+        <AStyled
         href="/lineLogin/line"
-        className='inline-flex w-100 items-center px-4 py-2  bg-green-600 text-white border border-transparent rounded-md font-semibold text-xs'
         >
-            LINE
-        </a>
+            LINE Login
+        </AStyled>
     );
 }
+
+const AStyled = styled.a`
+   display: flex;
+   justify-content: center;
+   text-align: center;
+   height: 50px;
+   margin: 40px auto;
+   align-items: center;
+   width: 150px;
+   color: #fff;
+   border-radius: 20px;
+   font-size: large;
+   font-weight: bold;
+   background-color: #00B900;
+
+   &:hover {
+       opacity: 0.8;
+   }
+`;

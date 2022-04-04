@@ -24,4 +24,8 @@ class Youtube extends Model
     public function categories(){
         return $this->belongsToMany('App\Models\Category');
     }
+
+    public function information(){
+        return $this->hasOne('App\Models\Information');
+    }
 }
