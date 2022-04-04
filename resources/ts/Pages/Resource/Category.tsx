@@ -5,14 +5,20 @@ import Authenticated from '@/Layouts/Authenticated';
 import axios from 'axios';
 import { IProps } from '@/hooks';
 import SelectCategory from './SelectCategory';
+import { NewButton } from '@/NewComponents/NewButton';
 
 export interface IPic {
     webformatURL: string,
 }
 
+interface IBool {
+    bool: boolean
+}
+
 
 const Category:React.FC<IProps> = (props) => {
     const [value, setValue] = useState<string | undefined>();
+    const [scale, setScale] = useState<boolean>(false);
     const [pictures, setPictures] = useState<IPic[]>([]);
     const [category, setCategory] = useState<string | undefined>();
     const [boolean, setBoolean] = useState<boolean>(false);
@@ -26,7 +32,9 @@ const Category:React.FC<IProps> = (props) => {
                 per_page: 9,
             }
         }).then((response) => {
+            setScale(false);
             setPictures(response.data.hits);
+            setScale(true);
         });
     }
 
@@ -44,9 +52,6 @@ const Category:React.FC<IProps> = (props) => {
         <Authenticated
           auth={props.auth}
           errors={props.errors}
-          header={
-              <h2>Create Cateogry</h2>
-          }
         >
        {boolean &&  <SelectCategory
         category={category}
@@ -54,16 +59,19 @@ const Category:React.FC<IProps> = (props) => {
         boolean={boolean}
         handleClose={handleClose}
         />}
-        <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}/>
-           <Button
-           onClick={handleClick}
-           variant='contained'
-           >
-               Click
-           </Button>
+        <InputZone>
+            <input className="input" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}/>
+            <NewButton
+            className="newbutton"
+            onClick={handleClick}
+            color="#afeeee"
+            >
+                Click
+            </NewButton>
+        </InputZone>
            <PictureWrapper>
                 {pictures?.map((picture) => (
-                  <ImgCard>
+                  <ImgCard bool={scale}>
                     <img src={picture.webformatURL}/>
                     <button
                     onClick={()=>handleDetail(picture)}
@@ -71,7 +79,6 @@ const Category:React.FC<IProps> = (props) => {
                   </ImgCard>
                 ))}
            </PictureWrapper>
-
         </Authenticated>
     );
 }
@@ -97,13 +104,46 @@ const PictureWrapper = styled.div`
   }
 `;
 
-const ImgCard = styled.div`
+const InputZone = styled.div`
+   width: 30%;
+   margin: 0 auto;
+   position: relative;
+   height: 40vh;
+   background-color: whitesmoke;
+   border-radius: 30px;
+   margin-top: 30px;
+
+   .input {
+       border: 1px solid paleturquoise;
+       position: absolute;
+       top: 50px;
+       left: 50%;
+       transform: translateX(-50%);
+       margin: 0 auto;
+       transition: .5s;
+   }
+
+   .input:hover {
+       box-shadow: 5px 3px 3px paleturquoise,5px 3px 3px paleturquoise;
+   }
+
+   .newbutton {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translateX(-50%);
+   }
+`;
+
+const ImgCard = styled.div<IBool>`
   width: auto;
   padding: 5px;
   margin: 5px;
   border: 1px solid #d3cdd2;
   border-radius: 20px;
   background-color: #fff;
+  transition: .5s;
+  transform: ${({bool}) => bool? 1 : 0.4};
 
 button
 {

@@ -15,4 +15,8 @@ class Information extends Model
         'end_time',
         'description',
     ];
+
+    public function Youtube(){
+        return $this->belongTo('App\Models\Youtube');
+    }
 }

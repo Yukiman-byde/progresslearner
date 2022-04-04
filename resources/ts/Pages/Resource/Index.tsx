@@ -36,14 +36,13 @@ const Index:React.FC<IProps>  = (props:IProps) => {
     }
 
     function handleSelect(event:React.MouseEventHandler<HTMLButtonElement>){
-        console.log()
+
     }
 
    return (
        <Authenticated
        auth={props.auth}
        errors={props.errors}
-       header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Videos</h2>}
        >
             <Wrapper>
               <Provider store={store}>
@@ -95,9 +94,11 @@ const RightWrapper = styled.div`
   flex: 0.4;
   margin-left: 10px;
   padding: 10px;
-  width: 100%;
+  right: 30px;
+  width: 40%;
   text-align: center;
   justify-content: center;
-  position: sticky;
+  position: fixed;
   overflow-x: clip;
+  transform: translateY(-35px);
 `;

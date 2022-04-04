@@ -12,4 +12,14 @@ class Level extends Model
     public function youtubes(){
         return $this->belongsToMany('App\Models\Youtube');
     }
+
+    public function distinction($value, $youtube){
+        $level = intval($value);
+        $collection = $this->filter(function($value, $key) use($level){
+
+        dd($value);
+
+        });
+        dd($collection->toArray());
+    }
 }

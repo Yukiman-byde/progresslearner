@@ -1,3 +1,5 @@
+import { StringifyOptions } from "querystring";
+
 export interface IProps {
     auth: {
         user: {
@@ -6,6 +8,7 @@ export interface IProps {
             id: number;
             name: string;
             updated_at: number;
+            myAvatar?: string;
         }
     }
     errors?: {}
@@ -48,3 +51,15 @@ export interface IVideoInfo {
       videoId: string,
     }
  }
+
+ export interface IPropsAndIVideo extends IProps {
+     youtubes: {
+         videoId: string,
+         name: string,
+         description: string,
+         thumbnail: string,
+     }
+ }
+
+
+

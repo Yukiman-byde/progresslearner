@@ -60,11 +60,13 @@ Route::middleware(Cors::class)->prefix('admin')->group(function(){
     Route::get('/categories', [ResourceController::class, 'categories'])->name('category');
 });
 Route::get('/practice', [ResourceController::class, 'practice']);
+Route::get('/practice2', [ResourceController::class, 'practice2']);
 
 Route::middleware('auth')->group(function(){
     Route::get('/index', [IndexController::class, 'index'])->name('index.app');
-    Route::get('/index/Iframes', [IndexController::class, 'IFrame'])->name('index.iframe');
-    Route::get('/index/youtubes', [IndexController::class, 'test']);
+    Route::get('/index/Iframes/{value}', [IndexController::class, 'IFrame'])->name('index.iframe');
+    Route::get('/index/youtubesInfo', [IndexController::class, 'test']);
+    Route::get('/index/{title}', [IndexController::class, 'detail']);
 });
 
 

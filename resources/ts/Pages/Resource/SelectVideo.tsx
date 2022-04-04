@@ -4,6 +4,7 @@ import { useAppSelector } from '../hooks';
 import { Card, Button } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import axios from 'axios';
+import { NewButton } from '@/NewComponents/NewButton';
 
 const SelectVideo = () => {
 
@@ -40,13 +41,13 @@ const SelectVideo = () => {
                     <h2>{video.description}</h2>
                 </CardContent>
             </CardStyled>
-            <Button
-             variant='contained'
-             color='info'
-             onClick={handlePost}
+
+            <NewButtonStyled
+            color="#afeeee"
+            onClick={handlePost}
             >
                 Next Step
-            </Button>
+            </NewButtonStyled>
         </Wrapper>
     );
 }
@@ -66,4 +67,9 @@ const Wrapper = styled.div`
 
 const CardStyled = styled(Card)`
    margin-bottom: 30px;
+`;
+
+
+const NewButtonStyled = styled(NewButton)`
+ margin: 0 auto;
 `;
