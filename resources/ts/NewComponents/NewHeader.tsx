@@ -1,4 +1,4 @@
-import { IProps } from '@/hooks'
+import { IProps } from '@/Pages/Auth/hooks'
 import styled from 'styled-components';
 import React from 'react'
 import Avatar from '@mui/material/Avatar';

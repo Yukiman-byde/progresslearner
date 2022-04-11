@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import NavLink from '@/Components/NavLink';
 import Box from '@mui/material/Box';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -43,4 +41,3 @@ const CompleteInfo:React.FC<Props> = ({buttonTitle})=> {
 }
 
 export default CompleteInfo
-

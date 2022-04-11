@@ -21,7 +21,7 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Resource/Index');
+        return Inertia::render('Auth/Admin/Index');
     }
 
     /**
@@ -58,7 +58,7 @@ class ResourceController extends Controller
 
     public function categories(Category $category)
     {
-      return Inertia::render('Resource/Category');
+      return Inertia::render('Auth/Admin/Category/Category');
     }
 
     public function update_categories(StoreResourceRequest $request, Category $category){
@@ -85,7 +85,7 @@ class ResourceController extends Controller
         $youtube = $youtube->where('videoId', $id)->first();
         $levels = $level->get();
         $categories = $category->get();
-        return Inertia::render('Resource/Quiz')->with(['video' => $youtube, 'levels' => $levels, 'categories' => $categories]);
+        return Inertia::render('Auth/Admin/Quiz')->with(['video' => $youtube, 'levels' => $levels, 'categories' => $categories]);
     }
 
     /**

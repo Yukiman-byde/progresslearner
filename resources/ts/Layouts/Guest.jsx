@@ -2,9 +2,17 @@ import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Link } from '@inertiajs/inertia-react';
+import VanillaTilt from 'vanilla-tilt';
 import { LineButton } from '../Components/LineButton';
 
 export default function Guest({ children }) {
+
+    const options = {
+        scale: 1.2,
+        speed: 1000,
+        max: 30
+    }
+
     return (
         <Wrapper>
           <Color1></Color1>
@@ -19,12 +27,10 @@ export default function Guest({ children }) {
                 <div className="circle1"></div>
                 <div className="circle2"></div>
             <Container>
-                <div>
-                   <h1><span>P</span>
-                   rogress
-                   <span>L</span>earner</h1>
-                   <LineButton></LineButton>
-                </div>
+                <h1><span>P</span>
+                rogress
+                <span>L</span>earner</h1>
+                <LineButton></LineButton>
             </Container>
           </BoxStyled>
         </Wrapper>

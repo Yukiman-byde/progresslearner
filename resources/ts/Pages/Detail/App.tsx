@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import Authenticated from '@/Layouts/Authenticated';
-import {IPropsAndIVideo} from '../../hooks';
+import {IPropsAndIVideo} from '../Auth/hooks';
 import NewHeader from '@/NewComponents/NewHeader';
 import Title from '@/NewComponents/Title';
 import { NewButton } from '@/NewComponents/NewButton';

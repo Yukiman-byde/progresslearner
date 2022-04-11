@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IVideo } from "@/hooks";
+import { IVideo } from "@/Pages/Auth/hooks";
 
 const initialState: IVideo = {
     videoId: undefined,
@@ -24,4 +24,3 @@ const VideoSlice = createSlice({
 export const { select } = VideoSlice.actions;
 
 export default VideoSlice.reducer;
-

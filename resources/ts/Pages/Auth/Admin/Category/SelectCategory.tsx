@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { IPic } from './Category'
 import Dialog from '@mui/material/Dialog';
 import styled from 'styled-components';
 import Paper from '@mui/material/Paper';

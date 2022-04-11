@@ -6,11 +6,11 @@ import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import Authenticated from '@/Layouts/Authenticated';
-import { IProps } from '@/hooks';
+import { IProps } from '@/Pages/Auth/hooks';
 import HomeHeader from './HomeHeader';
 import axios from 'axios';
 import styled from 'styled-components';
-import {IPropsAndIVideo} from '../../hooks';
+import {IPropsAndIVideo} from '../Auth/hooks';
 import Grid from '@mui/material/Grid';
 import ItemListed from './ItemListed';
 

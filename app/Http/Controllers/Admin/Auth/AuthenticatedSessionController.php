@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Admin\Admin;
 
 class AuthenticatedSessionController extends Controller
 {
+
     /**
      * Display the login view.
      *
@@ -31,14 +33,28 @@ class AuthenticatedSessionController extends Controller
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(LoginRequest $request)
+    public function store(LoginRequest $request, Admin $admin)
     {
-        dd('it come here');
-        $request->authenticate();
+        $check = $request->only('email', 'password');
 
-        $request->session()->regenerate();
+        $admin_user = $admin->where('email', $check['email'])
+                            ->where('password', $check['password'])
+                            ->first();
 
-        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+        if($admin_user !== null){
+            Auth::guard('admin')->login($admin_user);
+            return redirect(RouteServiceProvider::ADMIN_HOME);
+        } else {
+            dd('it was rejected');
+            return back()->with('Your request was rejected');
+        }
+
+
+        // $request->authenticate();
+
+        // $request->session()->regenerate();
+
+       // return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
     }
 
     /**
@@ -49,12 +65,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        //webからadminに変更
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect(RouteServiceProvider::HOME);
     }
 }

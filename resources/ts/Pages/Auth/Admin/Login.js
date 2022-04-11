@@ -27,7 +27,7 @@ export default function Login({ status, canResetPassword }) {
     const submit = (e) => {
         e.preventDefault();
 
-        post('/login');
+        post('/Admin/login');
     };
     return (
         <Wrapper
@@ -102,13 +102,11 @@ const InputComponent = styled.div`
     width: 50%;
     margin: 0 auto;
     margin-bottom: 10px;
-
     Label {
     color: rebeccapurple;
     font-size: 22px;
     margin-bottom: 10px;
     }
-
     Input {
         margin-bottom: 10px;
     }

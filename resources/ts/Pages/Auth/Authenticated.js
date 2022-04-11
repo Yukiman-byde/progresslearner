@@ -3,6 +3,7 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import Avatar from '@mui/material/Avatar';
+import { Link } from '@inertiajs/inertia-react';
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -16,9 +17,17 @@ export default function Authenticated({ auth, header, children }) {
                         <div className="flex">
 
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                {auth.user.email &&  <NavLink href={route('resource.index')} active={route().current('resource.index')}>
+                                    Resources
+                                </NavLink>
+                                }
                                 <NavLink href={route('index.app')} active={route().current('index.app')}>
                                     Index
                                 </NavLink>
+                                {auth.user.email && <NavLink href={route('category')} active={route().current('category')}>
+                                    Categories
+                                </NavLink>
+                                }
                             </div>
                         </div>
 
@@ -51,7 +60,7 @@ export default function Authenticated({ auth, header, children }) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-                                        <Dropdown.Link href={route('logout')} method="post" as="button">
+                                        <Dropdown.Link href="/Admin/logout" method="post" as="button">
                                             Log Out
                                         </Dropdown.Link>
                                         <Dropdown.Link href={route('logout')} method="post" as="button">

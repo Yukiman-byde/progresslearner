@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import videoReducer from './Resource/VideoInfo';
+import videoReducer from './Admin/VideoInfo';
 
 export const store = configureStore({
     reducer: {

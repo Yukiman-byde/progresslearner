@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import Authenticated from '@/Layouts/Authenticated';
+import Authenticated from '../../Auth/Authenticated';
 import { Head } from '@inertiajs/inertia-react';
 import { Provider } from 'react-redux';
-import { IProps, IYoutubeVideo, IVideo } from '@/hooks';
+import { IProps, IYoutubeVideo, IVideo } from '@/Pages/Auth/hooks';
 import InputComponent from './InputComponent';
 import axios, { AxiosResponse } from 'axios';
-import Search_Base_Url from '../Youtube/YoutubeApi';
+import Search_Base_Url from './Youtube/YoutubeApi';
 import styled, {keyframes} from 'styled-components';
 import Video from './Video';
 import SelectVideo from './SelectVideo';
