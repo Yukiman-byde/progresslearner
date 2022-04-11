@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { IYoutubeVideo, IVideo } from '@/hooks';
-import Search_Base_Url from '../Youtube/YoutubeApi';
+import { IYoutubeVideo, IVideo } from '@/Pages/Auth/hooks';
+import Search_Base_Url from './Youtube/YoutubeApi';
 import { select } from './VideoInfo';
 import { useAppDispatch } from '../hooks';
 import styled from 'styled-components';

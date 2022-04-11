@@ -49,9 +49,9 @@ class LineController extends Controller
         //     }
         // }
 
-        Auth::login($user);
+        Auth::guard('web')->login($user);
 
-        return redirect()->route('resource.index');
+        return redirect('/index');
     }
 
     public function logout()

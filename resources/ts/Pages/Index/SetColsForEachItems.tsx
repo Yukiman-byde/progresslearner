@@ -1,22 +1,15 @@
-import { JSXElement } from '@babel/types';
+import { IVideo } from '@/Pages/Auth/hooks';
 import React, {useState, useEffect} from 'react';
 
 export interface IVideos {
-    created_at: string,
-    description: string,
-    name: string,
-    id: number,
-    thumbnail: string,
-    videoId: string,
+        created_at: string,
+        description: string,
+        name: string,
+        id: number,
+        thumbnail: string,
+        videoId: string,
 }
 
-export interface IVideoType {
-    img: string | null,
-    name: string | null,
-    rows: number | null,
-    cols: number | null,
-    created_at: string,
-}
 
 export interface IDatum {
     img: string,
@@ -27,16 +20,23 @@ export interface IDatum {
 }
 
 
- function SetsColsForEachItems(items){
-     const number = items.videos.length;
+ function SetsColsForEachItems(
+     items: IVideos[]
+    ) :IDatum[]
+    {
+
+     const number = items.length;
 
      const datum:IDatum[] = [];
 
-     const videos:IVideoType = items.videos;
-
-
      for(let i = 0; i < number; i++){
-        datum.push({img: videos[i].thumbnail, title: videos[i].name, rows: (i % 3 == 0 ? 2 : 1), cols: (i % 3 == 0 ? 2 : 1), created_at: videos[i].created_at});
+        datum.push({
+            img: items[i].thumbnail,
+            title: items[i].name,
+            rows: (i % 3 == 0 ? 2 : 1),
+            cols: (i % 3 == 0 ? 2 : 1),
+            created_at: items[i].created_at
+        });
      }
 
     return datum;

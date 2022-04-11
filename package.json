@@ -51,6 +51,7 @@
         "react-tooltip": "^4.2.21",
         "redux-devtools-extension": "^2.13.9",
         "redux-thunk": "^2.4.1",
-        "styled-components": "^5.3.3"
+        "styled-components": "^5.3.3",
+        "vanilla-tilt": "^1.7.2"
     }
 }

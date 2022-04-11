@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Authenticated from '@/Layouts/Authenticated';
-import { IProps } from '@/hooks';
+import { IProps } from '@/Pages/Auth/hooks';
 import styled from 'styled-components';
 import FormControl from '@mui/material/FormControl';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -14,7 +14,7 @@ import StepButton from '@mui/material/StepButton';
 import axios from 'axios';
 import CreateQuizComponent from './CreateQuizComponent';
 import Description from './Description';
-import CompleteInfo from './CompleteInfo';
+import CompleteInfo from '../Admin/Category/CompleteInfo';
 
 
 interface INewProps extends IProps {
@@ -280,4 +280,3 @@ const CategoryWrapper = styled.div`
       background-color: white;
   }
 `;
-

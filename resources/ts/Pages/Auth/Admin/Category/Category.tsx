@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import styled from 'styled-components';
 import Authenticated from '@/Layouts/Authenticated';
 import axios from 'axios';
-import { IProps } from '@/hooks';
+import { IProps } from '@/Pages/Auth/hooks';
 import SelectCategory from './SelectCategory';
 import { NewButton } from '@/NewComponents/NewButton';
 

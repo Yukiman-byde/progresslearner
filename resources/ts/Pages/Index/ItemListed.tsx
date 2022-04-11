@@ -7,18 +7,14 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import StartIcon from '@mui/icons-material/Start';
-import SetsColsForEachItems, { IVideoType , IVideos, IDatum} from './SetColsForEachItems';
-import { IframeStyled } from '../Resource/Video';
+import SetsColsForEachItems, { IVideos, IDatum} from './SetColsForEachItems';
+import { IframeStyled } from '../Auth/Admin/Video';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import NewComments from '@/NewComponents/NewComments';
 import { current } from 'immer';
 
-interface IVal {
-    value: number,
-}
 
-
-function ItemListed<IVal>({value}) {
+function ItemListed<IVal>({value}: {value: string}) {
 
      const [items, setItems] = useState<IDatum[]>([]);
 
@@ -31,7 +27,7 @@ function ItemListed<IVal>({value}) {
   useEffect(() => {
 
     axios.get(`/index/Iframes/${value}`).then((response) => {
-        const result:IDatum[] = SetsColsForEachItems(response.data);
+        const result:IDatum[] = SetsColsForEachItems(response.data.videos);
 
         setItems(result);
       });

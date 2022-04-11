@@ -17,7 +17,7 @@ export default function Welcome(props) {
                                 Log in
                             </Link>
 
-                            <Link href="admin/login" className="ml-4 text-sm text-gray-700 underline">
+                            <Link href="/Admin/login" className="ml-4 text-sm text-gray-700 underline">
                                 Coworkers
                             </Link>
                         </>

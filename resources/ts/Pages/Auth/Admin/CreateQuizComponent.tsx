@@ -3,7 +3,7 @@ import Slider from '@mui/material/Slider';
 import React,{useState} from 'react';
 import { IResult } from './Caluculate/VideoTime';
 import axios from 'axios';
-import {Video_Base_Url} from '../Youtube/YoutubeApi';
+import {Video_Base_Url} from './Youtube/YoutubeApi';
 import styled from 'styled-components';
 import VideoTime from './Caluculate/VideoTime';
 import { Button } from '@mui/material';
